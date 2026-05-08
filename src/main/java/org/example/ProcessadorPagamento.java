@@ -7,16 +7,17 @@ public class ProcessadorPagamento {
     public ProcessadorPagamento(CartaoCredito cartaoCredito) {
         this.cartaoCredito = cartaoCredito;
 
-        public double processar(double valor) {
-
+        public boolean processar(double valor) {
             if (valor <= 0) {
-                System.out.println("valor invalido, valor deve ser maior que zero. ");
-                return;
-                if (valor > cartaoCredito.getLimiteDisponivel()) {
-                    System.out.println("Saldo insuficiente para o pagamento. ");
-                    System.out.println("Saldo disponível: " + cartaoCredito.getLimiteDisponivel());
-
-
-                }
+                System.out.println("Valor inválido, valor deve ser maior que zero.");
+                return false;
             }
-        }}}
+            if (valor > cartaoCredito.getLimiteDisponivel()) {
+                System.out.println("Saldo insuficiente para o pagamento.");
+                System.out.println("Saldo disponível: " + cartaoCredito.getLimiteDisponivel());
+                return false;
+            }
+
+
+        }
+    }}
